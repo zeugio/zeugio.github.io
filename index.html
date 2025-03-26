@@ -23,20 +23,6 @@
       height: 100%;
       position: relative;
     }
-    
-    .logo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 60%;
-      max-width: 800px;
-      transform: translate(-50%, -50%);
-      opacity: 0.3;
-      pointer-events: none;
-      z-index: 10; /* erhöhe zur Sicherheit */
-    }
-
-
 
     .half {
       flex: 1;
@@ -79,6 +65,31 @@
       font-size: 0.9rem;
     }
 
+    .info-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      max-width: 600px;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.85);
+      color: #111;
+      font-family: system-ui, sans-serif;
+      font-size: 0.95rem;
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 5;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .info-box {
+        background: rgba(20,20,20,0.9);
+        color: #eee;
+      }
+    }
+
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
@@ -87,10 +98,6 @@
       .half {
         flex: none;
         height: 50%;
-      }
-
-      .logo {
-        width: 80%;
       }
     }
   </style>
@@ -115,6 +122,17 @@ def start_nerd():
       </pre>
     </div>
 
-
+    <!-- Info-Text in der Mitte -->
+    <div class="info-box">
+      <p><strong>Zeug.io ist kein Shop.</strong> Noch nicht mal ein richtiges Produkt.</p>
+      <p>
+        Es ist ein Nerdprojekt für alle, die Technik lieben – aber keinen Bock auf Cloud-Zwang,
+        Abos oder überteuertes Smart-Home haben.
+      </p>
+      <p>
+        Wenn du gern baust, bastelst oder einfach neugierig bist: Willkommen!
+      </p>
+    </div>
   </div>
 </body>
+</html>
