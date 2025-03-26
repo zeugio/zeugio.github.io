@@ -1,84 +1,98 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zeug.io</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zeug.io – Wähle deinen Modus</title>
   <style>
-    @media (max-width: 600px) {
-      body {
-        padding: 1rem;
-        font-size: 0.9rem;
-      }
-      pre {
-        font-size: 0.8rem;
-      }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .footer {
-    position: absolute;
-    bottom: 1rem;
-    left: 0;
-    right: 0;
-    text-align: center;
-    }
     html, body {
-    height: 100vh;
-    overflow: hidden;
-    }
-    body {
-      background-color: #121212;
-      color: #e0e0e0;
+      height: 100vh;
       font-family: monospace;
+    }
+
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .half {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
       padding: 2rem;
     }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
+
+    .normal {
+      background-color: #f0f0f0;
+      color: #333;
     }
-    pre {
+
+    .nerd {
+      background-color: #121212;
       color: #00ff00;
+    }
+
+    .normal:hover {
+      background-color: #e0e0e0;
+    }
+
+    .nerd:hover {
       background-color: #1e1e1e;
-      padding: 1em;
-      border-radius: 10px;
-      overflow-x: auto;
     }
-    a {
-      color: #00ffff;
-      text-decoration: none;
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
     }
-    a:hover {
-      text-decoration: underline;
+
+    pre {
+      text-align: left;
+      max-width: 90%;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .half {
+        flex: none;
+        height: 50%;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Willkommen bei Zeug.io</h1>
-  <pre>
-                        _       
-  _______ _   _  __ _  (_) ___  
- |_  / _ \ | | |/ _` | | |/ _ \ 
-  / /  __/ |_| | (_| |_| | (_) |
- /___\___|\__,_|\__, (_)_|\___/ 
-                |___/           
+  <div class="container">
+    <!-- Normal-Modus -->
+    <div class="half normal" onclick="location.href='normal/index.html'">
+      <h1>🌱 Normaler Modus</h1>
+      <p>Hell. Freundlich. Einfach. Willkommen im Zeug.io für alle.</p>
+    </div>
 
-  Nachhaltige DIY-Technik für Garten, Grill & mehr.
-  </pre>
-
-  <p><strong>Modulübersicht:</strong></p>
-  <ul>
-    <li><a href="#">🌱 Grünzeug – Dein smarter Gartenassistent</a></li>
-    <li><a href="#">🔥 Grillzeug – Temperatur im Griff</a></li>
-    <li><a href="#">🌦️ Wetterzeug – DIY-Wetterstation</a></li>
-    <li><a href="#">🧠 Zeug Hub – Alles an einem Ort</a></li>
-  </ul>
-  <p>Diese Seite wird aktiv entwickelt. Du willst mitmachen oder Feedback geben?<br>
-  Schreib an: <a href="mailto:zeugio.project@gmail.com">zeugio.project@gmail.com</a></p>
-
-  <div class="footer">
-    <a href="about.html">→ Über Zeug.io</a>
+    <!-- Nerd-Modus -->
+    <div class="half nerd" onclick="location.href='nerd/index.html'">
+      <h1>🤖 Nerd-Modus</h1>
+      <pre>
+def start_nerd():
+    system = 'unix'
+    theme = 'dark'
+    ascii = True
+    return Zeugio.activate(system, theme, ascii)
+      </pre>
+    </div>
   </div>
 </body>
 </html>
-
-
