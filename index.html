@@ -84,7 +84,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-
     @media (prefers-color-scheme: dark) {
       .info-box {
         background: rgba(20,20,20,0.9);
@@ -92,6 +91,7 @@
       }
     }
 
+    /* Mobile Anpassung */
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
@@ -100,6 +100,58 @@
       .half {
         flex: none;
         height: 50%;
+      }
+
+      /* Verstecke Desktop-Infobox auf Mobile */
+      .info-box {
+        display: none;
+      }
+
+      .info-toggle {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        background: #222;
+        color: #fff;
+        border: none;
+        border-radius: 30px;
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+        z-index: 100;
+        cursor: pointer;
+      }
+
+      .info-box-mobile {
+        display: none;
+        position: fixed;
+        bottom: 3rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 400px;
+        background: rgba(20, 20, 20, 0.95);
+        color: #eee;
+        padding: 1.2rem;
+        border-radius: 10px;
+        z-index: 99;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        font-family: system-ui, sans-serif;
+        font-size: 0.9rem;
+      }
+
+      .info-box-mobile.active {
+        display: block;
+      }
+
+      .info-box-mobile .close-btn {
+        position: absolute;
+        top: 0.3rem;
+        right: 0.6rem;
+        background: none;
+        border: none;
+        color: #aaa;
+        font-size: 1.2rem;
+        cursor: pointer;
       }
     }
   </style>
@@ -124,17 +176,30 @@ def start_nerd():
       </pre>
     </div>
 
-    <!-- Info-Text in der Mitte -->
+    <!-- Info-Box (nur für Desktop sichtbar) -->
     <div class="info-box">
       <p><strong>Zeug.io ist kein Shop.</strong> Noch nicht mal ein richtiges Produkt.</p>
-      <p>
-        Es ist ein Nerdprojekt für alle, die Technik lieben – aber keinen Bock auf Cloud-Zwang,
-        Abos oder überteuertes Smart-Home haben.
-      </p>
-      <p>
-        Wenn du gern baust, bastelst oder einfach neugierig bist: Willkommen!
-      </p>
+      <p>Es ist ein Nerdprojekt für alle, die Technik lieben – aber keinen Bock auf Cloud-Zwang, Abos oder überteuertes Smart-Home haben.</p>
+      <p>Wenn du gern baust, bastelst oder einfach neugierig bist: Willkommen!</p>
     </div>
   </div>
+
+  <!-- Mobile-Info Button und Box -->
+  <button class="info-toggle" onclick="toggleInfo()">ℹ️ Info anzeigen</button>
+
+  <div class="info-box-mobile" id="infoBoxMobile">
+    <button class="close-btn" onclick="toggleInfo()">✖️</button>
+    <p><strong>Zeug.io ist kein Shop.</strong> Noch nicht mal ein richtiges Produkt.</p>
+    <p>Ein Nerdprojekt für alle, die Technik lieben – ohne Cloud-Zwang, Abo oder App-Zwang.</p>
+    <p>Wenn du gern bastelst oder einfach neugierig bist: Willkommen!</p>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function toggleInfo() {
+      const box = document.getElementById('infoBoxMobile');
+      box.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
